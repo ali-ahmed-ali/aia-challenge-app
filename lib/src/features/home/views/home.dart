@@ -1,5 +1,7 @@
+import 'package:aia_challenge_app/src/common/app_button.dart';
 import 'package:aia_challenge_app/src/constants/app_strings.dart';
 import 'package:aia_challenge_app/src/features/app_bar/custom_top_app_bar.dart';
+import 'package:aia_challenge_app/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,7 +36,16 @@ class HomePage extends ConsumerWidget {
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[const Text('You have pushed the button this many times:')],
+          children: <Widget>[
+            const Text('You have pushed the button this many times:'),
+            AppButton(
+              labelText: 'Go to chat',
+              onPressed: () async {
+                // Navigate to the chat screen
+                await ref.read(goRouterProvider).pushNamed(AppRoute.chat.name);
+              },
+            ),
+          ],
         ),
       ),
     );
