@@ -41,7 +41,7 @@ class CustomButton extends StatelessWidget {
         case ButtonType.error:
           return theme.colorScheme.error;
         case ButtonType.disabled:
-          return theme.colorScheme.surface.withValues(alpha: 0.38);
+          return theme.colorScheme.surface.withOpacity(0.38);
       }
     }
 
@@ -56,7 +56,7 @@ class CustomButton extends StatelessWidget {
         case ButtonType.error:
           return theme.colorScheme.onError;
         case ButtonType.disabled:
-          return theme.colorScheme.onSurface.withValues(alpha: 0.38);
+          return theme.colorScheme.onSurface.withOpacity(0.38);
       }
     }
 
@@ -72,14 +72,14 @@ class CustomButton extends StatelessWidget {
       case ButtonStyleType.outlined:
         return OutlinedButton.styleFrom(
           foregroundColor: getColor(),
-          disabledForegroundColor: getOnColor().withValues(alpha: 0.38),
+          disabledForegroundColor: getOnColor().withOpacity(0.38),
           elevation: elevation,
           shape: radius != null ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius!)) : null,
         );
       case ButtonStyleType.text:
         return TextButton.styleFrom(
           foregroundColor: getColor(),
-          disabledForegroundColor: getOnColor().withValues(alpha: 0.38),
+          disabledForegroundColor: getOnColor().withOpacity(0.38),
           elevation: elevation,
           shape: radius != null ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius!)) : null,
         );
@@ -148,21 +148,19 @@ CustomWrap customButtonExampleButtons() {
   return CustomWrap(
     spacing: PaddingSizes.xSmall, // Horizontal space between buttons
     runSpacing: PaddingSizes.xSmall, // Vertical space between buttons
-    children:
-        ButtonType.values.map((type) {
-          return Column(
-            children:
-                ButtonStyleType.values.map((styleType) {
-                  return CustomButton(
-                    type: type,
-                    styleType: styleType,
-                    icon: const Icon(Icons.add),
-                    text: '${type.toString().split('.').last} ${styleType.toString().split('.').last}',
-                    // tooltip: '${type.toString().split('.').last} ${styleType.toString().split('.').last}',
-                    onPressed: type == ButtonType.disabled ? null : () {},
-                  );
-                }).toList(),
+    children: ButtonType.values.map((type) {
+      return Column(
+        children: ButtonStyleType.values.map((styleType) {
+          return CustomButton(
+            type: type,
+            styleType: styleType,
+            icon: const Icon(Icons.add),
+            text: '${type.toString().split('.').last} ${styleType.toString().split('.').last}',
+            // tooltip: '${type.toString().split('.').last} ${styleType.toString().split('.').last}',
+            onPressed: type == ButtonType.disabled ? null : () {},
           );
         }).toList(),
+      );
+    }).toList(),
   );
 }
