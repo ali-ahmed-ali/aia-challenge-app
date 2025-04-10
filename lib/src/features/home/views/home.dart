@@ -37,7 +37,6 @@ class HomePage extends ConsumerWidget {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
             AppButton(
               labelText: 'Go to chat',
               onPressed: () async {

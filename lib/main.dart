@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
     final isDark = ref.watch(darkModeToggleNotifierProvider);
     return MaterialApp.router(
       routerConfig: goRouter,
-      title: 'Flutter Demo',
+      title: 'AIA Challenge App',
       color: AppColors.kPrimaryColor,
       debugShowCheckedModeBanner: false,
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
