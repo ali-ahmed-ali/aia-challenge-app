@@ -58,7 +58,6 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       appBar: AppBar(title: const Text("AIA Chat")),
       body: Column(
         children: [
-          Text("Is Listening: $isListening"),
           Expanded(
             child: ListView.builder(
               controller: _chatScroll.scrollController,
